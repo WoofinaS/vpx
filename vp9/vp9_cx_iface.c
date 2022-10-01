@@ -68,37 +68,37 @@ static struct vp9_extracfg default_extra_cfg = {
 #if CONFIG_REALTIME_ONLY
   5,  // cpu_used
 #else
-  0,  // cpu_used
+  3,  // cpu_used
 #endif
-  1,                     // enable_auto_alt_ref
+  6,                     // enable_auto_alt_ref
   0,                     // noise_sensitivity
-  0,                     // sharpness
+  3,                     // sharpness
   0,                     // static_thresh
-  6,                     // tile_columns
+  0,                     // tile_columns
   0,                     // tile_rows
   1,                     // enable_tpl_model
-  7,                     // arnr_max_frames
-  5,                     // arnr_strength
+  4,                     // arnr_max_frames
+  2,                     // arnr_strength
   0,                     // min_gf_interval; 0 -> default decision
   0,                     // max_gf_interval; 0 -> default decision
-  VP8_TUNE_PSNR,         // tuning
-  10,                    // cq_level
+  VP8_TUNE_SSIM,         // tuning
+  16,                    // cq_level
   0,                     // rc_max_intra_bitrate_pct
   0,                     // rc_max_inter_bitrate_pct
   0,                     // gf_cbr_boost_pct
   0,                     // lossless
   255,                   // target_level
-  1,                     // frame_parallel_decoding_mode
+  0,                     // frame_parallel_decoding_mode
   NO_AQ,                 // aq_mode
-  0,                     // alt_ref_aq
+  1,                     // alt_ref_aq
   0,                     // frame_periodic_delta_q
-  VPX_BITS_8,            // Bit depth
+  VPX_BITS_10,           // Bit depth
   VP9E_CONTENT_DEFAULT,  // content
   VPX_CS_UNKNOWN,        // color space
   0,                     // color range
   0,                     // render width
   0,                     // render height
-  0,                     // row_mt
+  1,                     // row_mt
   0,                     // motion_vector_unit_test
   0,                     // delta_q_uv
 };
@@ -2026,12 +2026,12 @@ static vpx_codec_enc_cfg_map_t encoder_usage_cfg_map[] = {
     {
         // NOLINT
         0,  // g_usage (unused)
-        8,  // g_threads
-        0,  // g_profile
+        32, // g_threads
+        2,  // g_profile
 
         320,         // g_width
         240,         // g_height
-        VPX_BITS_8,  // g_bit_depth
+        VPX_BITS_10, // g_bit_depth
         8,           // g_input_bit_depth
 
         { 1, 30 },  // g_timebase
@@ -2049,7 +2049,7 @@ static vpx_codec_enc_cfg_map_t encoder_usage_cfg_map[] = {
         60,  // rc_resize_down_thresold
         30,  // rc_resize_up_thresold
 
-        VPX_VBR,      // rc_end_usage
+        VPX_Q,        // rc_end_usage
         { NULL, 0 },  // rc_twopass_stats_in
         { NULL, 0 },  // rc_firstpass_mb_stats_in
         256,          // rc_target_bitrate
@@ -2069,8 +2069,8 @@ static vpx_codec_enc_cfg_map_t encoder_usage_cfg_map[] = {
 
         // keyframing settings (kf)
         VPX_KF_AUTO,  // g_kfmode
-        0,            // kf_min_dist
-        128,          // kf_max_dist
+        8,            // kf_min_dist
+        256,          // kf_max_dist
 
         VPX_SS_DEFAULT_LAYERS,  // ss_number_layers
         { 0 },
