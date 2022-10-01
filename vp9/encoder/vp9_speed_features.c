@@ -45,7 +45,7 @@ static int frame_is_boosted(const VP9_COMP *cpi) {
 static BLOCK_SIZE set_partition_min_limit(VP9_COMMON *const cm) {
   unsigned int screen_area = (cm->width * cm->height);
 
-  if (screen_area =< 1920 * 1080)
+  if (screen_area <= 1920 * 1080)
     return BLOCK_4X4;
   else
     return BLOCK_8X8;
