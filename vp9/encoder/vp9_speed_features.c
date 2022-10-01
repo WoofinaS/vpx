@@ -45,17 +45,10 @@ static int frame_is_boosted(const VP9_COMP *cpi) {
 static BLOCK_SIZE set_partition_min_limit(VP9_COMMON *const cm) {
   unsigned int screen_area = (cm->width * cm->height);
 
-  // Select block size based on image format size.
-  if (screen_area < 1280 * 720) {
-    // Formats smaller in area than 720P
+  if (screen_area =< 1920 * 1080)
     return BLOCK_4X4;
-  } else if (screen_area < 1920 * 1080) {
-    // Format >= 720P and < 1080P
+  else
     return BLOCK_8X8;
-  } else {
-    // Formats 1080P and up
-    return BLOCK_16X16;
-  }
 }
 
 static void set_good_speed_feature_framesize_dependent(VP9_COMP *cpi,
