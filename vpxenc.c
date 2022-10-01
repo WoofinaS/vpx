@@ -450,9 +450,15 @@ static const arg_def_t lossless =
 static const arg_def_t frame_parallel_decoding = ARG_DEF(
     NULL, "frame-parallel", 1, "Enable frame parallel decodability features");
 static const arg_def_t aq_mode = ARG_DEF(
-    NULL, "aq-mode", 1,
-    "Adaptive quantization mode (0: off (default), 1: variance 2: complexity, "
-    "3: cyclic refresh, 4: equator360)");
+    NULL,"aq-mode", 1, "Adaptive quantization mode"
+    "\n- 0 off (default)"
+    "\n- 1 variance"
+    "\n- 2 complexity"
+    "\n- 3 cyclic refresh"
+    "\n- 4 equator360)"
+    "\n- 5 perceptual"
+    "\n- 6 psnr"
+    "\n- 7 lookahead");
 static const arg_def_t alt_ref_aq = ARG_DEF(NULL, "alt-ref-aq", 1,
                                             "Special adaptive quantization for "
                                             "the alternate reference frames.");
